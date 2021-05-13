@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build application
-        run: npm run build --prod
+        run: npm link @angular/cli && npm run build --prod
         
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
