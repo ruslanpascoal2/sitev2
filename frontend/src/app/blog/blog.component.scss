@@ -1,0 +1,25 @@
+@import "../../../variables.scss";
+.layout{
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.blog{
+    border-left: 3px solid rgba(255, 255, 255, 0.11);
+}
+
+.author-bio{
+    .avatar{
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        background-image: url(../../assets/img/avatar.jpg);
+        background-position: center;
+        background-size: cover;
+        box-sizing: border-box;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px 5px rgba(#1f293f, 1);
+        &:hover{
+            box-shadow: 0px 0px 0px 5px $accent;
+        }
+    }
+}

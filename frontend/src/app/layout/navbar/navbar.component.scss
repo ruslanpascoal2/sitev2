@@ -1,0 +1,20 @@
+@import "../../../../variables.scss";
+.navbar{
+    height: $navbar-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo, .links{
+    color: #fff;
+}
+
+li{
+    font-size: 14px;
+}
+
+ul, li{
+    display: inline-block;
+}
+

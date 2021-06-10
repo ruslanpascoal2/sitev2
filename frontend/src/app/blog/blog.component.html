@@ -1,0 +1,24 @@
+<div class="grid layout ">
+   <section class="pr-3">
+      <div class="author-bio flex flex-col">
+         <div class="avatar mb-3 d-flex items-center justify-center">
+         </div>
+         <span class="font-medium mb-2 text-md text-white">Ruslan A. Pascoal</span>
+         <span class="font-light text-xs text-gray-100 mb-2">Front end engineer from Goiania, Brazil.</span>
+         <fa-icon class="text-gray-100 hover:text-accent cursor-pointer" [icon]="faLinkedin"></fa-icon>
+      </div>
+   </section>
+   <section class="blog">
+      <ng-container *ngIf="posts.length; else noPosts">
+         <app-post *ngFor="let post of posts" [post]="post"></app-post>
+      </ng-container>
+      <ng-template #noPosts>
+        <div class="flex flex-col items-center justify-center h-full w-full pt-5">
+         <span class="text-white mb-8">Nenhum conteúdo foi publicado ainda.</span>
+         <r-button>Criar post</r-button>
+        </div>
+      </ng-template>
+    
+   </section>
+   <section></section>
+</div>

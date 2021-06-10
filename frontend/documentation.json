@@ -1,0 +1,818 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "Post",
+            "id": "interface-Post-f5925f971b68322f99e29d5b43878d25",
+            "file": "src/app/blog/models/post.ts",
+            "type": "interface",
+            "sourceCode": "export interface Post{\r\n    id?: string,\r\n    title: string,\r\n    content: string,\r\n}",
+            "properties": [
+                {
+                    "name": "content",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-0163e67000bb8a60e012c3fc20b89f92",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'site'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'site';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../variables.scss\";\r\n\r\n#content{\r\n    height: calc(100vh - $navbar-height);\r\n    width: 100vw;\r\n}\r\n",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "\n\n<app-navbar></app-navbar>\n<div id=\"content\" class=\"flex justify-center\">\n  <div class=\"container px-2 pt-10\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n  \n\n"
+        },
+        {
+            "name": "BlogComponent",
+            "id": "component-BlogComponent-1ea22284c6accb3f90c237a8db897485",
+            "file": "src/app/blog/blog.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-blog",
+            "styleUrls": [
+                "./blog.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./blog.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "posts",
+                    "defaultValue": "[\n   \n  ]",
+                    "type": "Post[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Post } from './models/post';\n\n@Component({\n  selector: 'app-blog',\n  templateUrl: './blog.component.html',\n  styleUrls: ['./blog.component.scss']\n})\nexport class BlogComponent implements OnInit {\n\n  posts: Post[] = [\n   \n  ]\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".layout{\r\n    grid-template-columns: 1fr 2fr 1fr;\r\n}",
+                    "styleUrl": "./blog.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"grid layout \">\n   <section>blabla</section>\n   <section>\n    \n      <ng-container *ngIf=\"posts.length; else noPosts\">\n         <app-post *ngFor=\"let post of posts\" [post]=\"post\"></app-post>\n      </ng-container>\n      <ng-template #noPosts>\n        <div class=\"flex flex-col\">\n         <span class=\"text-white\">Nenhum post foi publicado ainda.</span>\n         <button class=\"\">Escrever</button>\n        </div>\n      </ng-template>\n    \n   </section>\n   <section></section>\n</div>"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-eb412b7de1e8e7353247fa34eb9d2ae6",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "button",
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "template": "<button                   type=\"button\"\n                   (click)=\"onClick.emit($event)\"\n                   [ngClass]=\"classes\"\n                   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n                   >\n                   {{ label }}\n             </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "defaultValue": "\"transparent\"",
+                    "line": 18,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Botão'",
+                    "line": 16,
+                    "type": "string"
+                },
+                {
+                    "name": "mode",
+                    "defaultValue": "\"primary\"",
+                    "line": 17,
+                    "type": "\"primary\" | \"secondary\" | \"accent\""
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "line": 19,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "click",
+                    "defaultValue": "new EventEmitter()",
+                    "line": 20,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'button',\n  template: ` <button\n                    type=\"button\"\n                    (click)=\"onClick.emit($event)\"\n                    [ngClass]=\"classes\"\n                    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n                    >\n                    {{ label }}\n              </button>`,\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent {\n  @Input() label: string = 'Botão';\n  @Input() mode: \"primary\" | \"secondary\" |\"accent\"= \"primary\";\n  @Input() backgroundColor?: string = \"transparent\";\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  @Output() click = new EventEmitter();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../variables.scss\";\r\n\r\n.button{\r\n  font-weight: 700;\r\n  border: 0;\r\n  border-radius: 3em;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  line-height: 1;\r\n}\r\n.button--primary {\r\n  color: white;\r\n  background-color: $primary;\r\n}\r\n.button--accent {\r\n    color: white;\r\n    background-color: $accent;\r\n  }\r\n.button--secondary {\r\n  color: #333;\r\n  background-color: transparent;\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\r\n}\r\n.button--small {\r\n  font-size: 12px;\r\n  padding: 10px 16px;\r\n}\r\n.button--medium {\r\n  font-size: 14px;\r\n  padding: 11px 20px;\r\n}\r\n.button--large {\r\n  font-size: 16px;\r\n  padding: 12px 24px;\r\n}",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "NavbarComponent",
+            "id": "component-NavbarComponent-71cfc4835dcff4c9f8ed116e1e85876f",
+            "file": "src/app/layout/navbar/navbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navbar",
+            "styleUrls": [
+                "./navbar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./navbar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-navbar',\n  templateUrl: './navbar.component.html',\n  styleUrls: ['./navbar.component.scss']\n})\nexport class NavbarComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../../variables.scss\";\r\n.navbar{\r\n    height: $navbar-height;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.logo, .links{\r\n    color: #fff;\r\n}\r\n\r\nli{\r\n    font-size: 14px;\r\n}\r\n\r\nul, li{\r\n    display: inline-block;\r\n}\r\n\r\n",
+                    "styleUrl": "./navbar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"navbar bg-primary\">\n   <div class=\"w-full h-full py-2 flex items-center justify-between container px-2\">\n    <div class=\"logo cursor-pointer text-4xl font-bold\">R.</div>\n    <div class=\"links\">\n        <ul>\n            <li class=\"mr-6\">\n                <a role=\"button\">Bio</a>\n            </li>\n            <li class=\"mr-6 \"><a role=\"button\">Contact</a></li>\n            <li>EN/PT-BR</li>\n        </ul>\n    </div>\n   </div>\n</div>"
+        },
+        {
+            "name": "PostComponent",
+            "id": "component-PostComponent-1ce42b880e3fb2360abd689f2a5a8cc1",
+            "file": "src/app/blog/components/post/post.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-post",
+            "styleUrls": [
+                "./post.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./post.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "post",
+                    "line": 10,
+                    "type": "Post"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { Post } from '../../models/post';\n\n@Component({\n  selector: 'app-post',\n  templateUrl: './post.component.html',\n  styleUrls: ['./post.component.scss']\n})\nexport class PostComponent implements OnInit {\n  @Input() post!: Post;\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./post.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 10
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"post-container flex flex-col p-2\">\n    <div class=\"post-title text-white font-bold pb-8\">\n        <h1 class=\"text-4xl\">{{post.title}}</h1>\n    </div>\n    <div class=\"post-content\">\n        <p class=\"text-justify text-white leading-8 \">\n            {{post.content}}\n        </p>\n    </div>\n</div>"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "NavbarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "BlogModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "BlogComponent"
+                        },
+                        {
+                            "name": "PostComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "BlogRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "BlogRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SharedModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/stories/Button.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "",
+                        "pathMatch": "full",
+                        "redirectTo": "blog"
+                    },
+                    {
+                        "path": "blog",
+                        "loadChildren": "./blog/blog.module#BlogModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/blog/blog-routing.module.ts",
+                                        "module": "BlogRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "BlogComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "BlogModule"
+                            }
+                        ]
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/blog/blog.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BlogComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/blog/components/post/post.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PostComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/blog/models/post.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Post",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/layout/navbar/navbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
